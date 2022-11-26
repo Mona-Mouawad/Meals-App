@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/Screens/TabsScreen/mainDrawer.dart';
 import 'package:meals_app/Screens/categoriesScreen/categoriesScreen.dart';
 import 'package:meals_app/Screens/favoritesScreen.dart';
+import 'package:meals_app/models/meal.dart';
 
 class TabsScreen extends StatefulWidget {
-  const TabsScreen({Key? key}) : super(key: key);
+  final List<Meal> favoriteMeals;
 
+  TabsScreen(this.favoriteMeals);
   @override
   State<TabsScreen> createState() => _TabsScreenState();
 }
@@ -40,7 +42,7 @@ class _TabsScreenState extends State<TabsScreen> {
           body: TabBarView(
             children: [
               CategoriesScreen(),
-              FavoritesScreen(),
+              FavoritesScreen(widget.favoriteMeals),
             ],
           ),
         ));
